@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block titulo %}Servicios detenidos{% endblock %}
+{% block contenido %}
+<div class="card error-pag">
+  <svg class="ico"><use href="#i-alert"/></svg>
+  <h1>El sistema no está disponible</h1>
+  <p>Para trabajar con los expedientes deben estar encendidos Apache y MySQL en el panel de control de XAMPP.</p>
+  <ul class="servicios">
+    {% for s in servicios %}
+    <li class="{{ 'arriba' if s.activo else 'abajo' }}"><span>{{ s.nombre }} <small>(puerto {{ s.puerto }})</small></span><strong>{{ 'En ejecución' if s.activo else 'Detenido' }}</strong></li>
+    {% endfor %}
+  </ul>
+  <a class="boton" href="">Volver a comprobar</a>
+</div>
+{% endblock %}
